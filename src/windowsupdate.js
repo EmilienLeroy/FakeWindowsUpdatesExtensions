@@ -1,9 +1,15 @@
 
 class WindowsUpdate
 {
-    constructor({time = '500'}){
+    constructor({time = '50000'}){
         this.time = parseFloat(time); 
         this.isDisplay = false;
+        this.percentage = 0;
+        this.refresh = 1000;
+    }
+
+    get percentageDom(){
+        return document.querySelector('#update__percentage');
     }
 
     initDom(){
@@ -13,17 +19,32 @@ class WindowsUpdate
 
     addPopup(){
         this.initDom();
-        this.wrapper.classList.add('wrap');
-        this.style.innerHTML = this.renderStyle();
-        this.wrapper.innerHTML = this.renderHtml();
-        document.body.append(this.style);
-        document.body.append(this.wrapper);
-        this.isDisplay = true;
+        this.generateWindowsUpdate().then(() => {
+            this.currentTime = this.time;
+            this.loading();
+            this.isDisplay = true;
+        })
+
     }
 
+    generateWindowsUpdate(){
+        return new Promise(res => {
+            this.wrapper.classList.add('wrap');
+            this.style.innerHTML = this.renderStyle();
+            this.wrapper.innerHTML = this.renderHtml();
+            document.body.append(this.style);
+            document.body.append(this.wrapper);
+            res();
+        })
+    }
+
+    /**
+     * TODO remove setTimeout when remove
+     */
     removePopup(){
         this.wrapper.remove();
         this.style.remove();
+        this.percentage = 0;
         this.isDisplay = false;
     }
 
@@ -31,28 +52,158 @@ class WindowsUpdate
         this.isDisplay ? this.removePopup() : this.addPopup();
     }
 
+    loading(){
+        //calcul the percentage time
+        this.currentTime = this.currentTime - this.refresh;
+        this.percentage = ((this.time - this.currentTime) * 100) / this.time;
+        
+        if(this.percentageDom) {
+            this.percentageDom.innerHTML = parseInt(this.percentage)+'% complete';
+        }
+        
+        //is the time isn't finish reload the function
+        if(this.currentTime != 0){
+            setTimeout(() => {
+                this.loading();
+            }, this.refresh);
+        }
+    }
+    
+
     renderHtml(){
         return `
-            <div class="test">
-                Ahaha
+            <div class="update">
+                <div class="update__content">
+
+                    <div class="update__loader">
+                        <div class="update__spinner">
+                            <div class="spinner__point"></div>
+                        </div>
+                        <div class="update__spinner update__spinner--second">
+                            <div class="spinner__point"></div>
+                        </div>
+                        <div class="update__spinner update__spinner--third">
+                                <div class="spinner__point"></div>
+                        </div>
+                        <div class="update__spinner update__spinner--four">
+                                <div class="spinner__point"></div>
+                        </div>
+                        <div class="update__spinner update__spinner--five">
+                                <div class="spinner__point"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="update__text">
+                        <p>Working on updates</p>
+                        <p id="update__percentage">0% complete</p>
+                        <p>Don't turn of your computer</p>
+                    </div>
+                </div>
             </div>
         `;
     }
 
     renderStyle(){
         return `
+            *{
+                padding: 0;
+                margin: 0;
+            }
+
             body{
                 overflow: hidden;
             }
-
-            .wrap{
+            
+            .update{
+                background-color: #005aa0;
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 position: fixed;
                 top: 0;
                 left: 0;
-                width: 100%;
-                height: 100vh;
-                background-color: black;
                 z-index: 10000;
+            }
+            
+            .update__content{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .update__spinner{
+                text-align: center;
+                margin: 20px;
+            }
+            
+            .update__text{
+                text-align: center;
+                color: #fbfdfd;
+                font-family: sans-serif;
+                font-size: 20px;
+                line-height: 30px;
+            }
+            
+            .update__loader{
+                height: 50px;
+                width: 50px;
+                margin: 20px;
+            }
+
+            .update__text p{
+                margin: 0;
+            }
+            
+            .update__spinner{
+                width: 50px;
+                height: 50px;
+                border-radius: 50px;
+                position: absolute;
+                margin: 0;
+                animation-name: rotate;
+                animation-duration: 1.4s;
+                animation-timing-function: cubic-bezier(0.05, 0.57, 0.63, 0.38);
+                animation-delay: 0s;
+                animation-iteration-count: infinite;
+            }
+            
+            .update__spinner--second{
+                animation-delay: 0.2s;
+            }
+            
+            .update__spinner--third{
+                animation-delay: 0.4s;
+            }
+            
+            .update__spinner--four{
+                animation-delay: 0.6s;
+            }
+            
+            .update__spinner--five{
+                animation-delay: 0.8s;
+            }
+            
+            .update__spinner--six{
+                animation-delay: 1s;
+            }
+            
+            .spinner__point{
+                width: 7px;
+                height: 7px;
+                border-radius: 10px;
+                background-color: white
+            }
+            
+            @keyframes rotate{
+                0% {
+                    transform: rotate(0.7turn)
+                }       
+                100%{
+                    transform: rotate(1.7turn)
+                }
             }
         `;
     }

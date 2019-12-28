@@ -1,11 +1,12 @@
 
 class WindowsUpdate
 {
-    constructor({time = '50000'}){
-        this.time = parseFloat(time); 
+    constructor(){
+        this.time = 50000; 
         this.isDisplay = false;
         this.percentage = 0;
         this.refresh = 1000;
+        this.interval;
     }
 
     get percentageDom(){
@@ -21,7 +22,9 @@ class WindowsUpdate
         this.initDom();
         this.generateWindowsUpdate().then(() => {
             this.currentTime = this.time;
-            this.loading();
+            this.interval = setInterval(() => {
+                this.loading();
+            }, this.refresh);
             this.isDisplay = true;
         })
 
@@ -46,9 +49,18 @@ class WindowsUpdate
         this.style.remove();
         this.percentage = 0;
         this.isDisplay = false;
+        clearInterval(this.interval);    
     }
 
-    togglePopup(){
+    togglePopup(time){
+        if(time) {
+            this.time = parseFloat(time) * 1000;
+        }
+
+        if(this.time <= 0){
+            this.time = 1000;
+        }
+        
         this.isDisplay ? this.removePopup() : this.addPopup();
     }
 
@@ -62,10 +74,8 @@ class WindowsUpdate
         }
         
         //is the time isn't finish reload the function
-        if(this.currentTime != 0){
-            setTimeout(() => {
-                this.loading();
-            }, this.refresh);
+        if(this.currentTime < 0 || this.percentage >= 100){
+            clearInterval(this.interval);
         }
     }
     

@@ -1,8 +1,8 @@
-const windowsUpdate = new WindowsUpdate({time: "500000"});
+const windowsUpdate = new WindowsUpdate();
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        windowsUpdate.togglePopup();
+        windowsUpdate.togglePopup(request.time);
         sendResponse({
             isDisplay: windowsUpdate.isDisplay,
         });

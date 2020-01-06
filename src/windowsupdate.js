@@ -172,12 +172,14 @@ class WindowsUpdate
                 height: 50px;
                 border-radius: 50px;
                 position: absolute;
+                opacity: 0;
                 margin: 0;
-                animation-name: rotate;
-                animation-duration: 1.4s;
+                animation-name: rotate, fade;
+                animation-duration: 1.4s, 0.2s;
                 animation-timing-function: cubic-bezier(0.05, 0.57, 0.63, 0.38);
                 animation-delay: 0s;
-                animation-iteration-count: infinite;
+                animation-iteration-count: infinite, 1;
+                animation-fill-mode: forwards;
             }
             
             .update__spinner--second{
@@ -213,6 +215,15 @@ class WindowsUpdate
                 }       
                 100%{
                     transform: rotate(1.7turn)
+                }
+            }
+
+            @keyframes fade{
+                0% {
+                    opacity: 0;
+                }       
+                100%{
+                    opacity: 1;
                 }
             }
         `;

@@ -16,9 +16,12 @@ chrome.storage.sync.get(['time'], function(store) {
         }
         
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, { time: time.value });
+            chrome.tabs.sendMessage(tabs[0].id, { time: time.value }, function (result) {
+                result.isDisplay ?
+                    btn.innerHTML = 'stop' :
+                    btn.innerHTML = 'start';
+            });
         });
     })
 });
-
 

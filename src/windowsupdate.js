@@ -20,30 +20,22 @@ class WindowsUpdate
 
     addPopup(){
         this.initDom();
-        this.generateWindowsUpdate().then(() => {
-            this.currentTime = this.time;
-            this.interval = setInterval(() => {
+        this.generateWindowsUpdate();
+        this.currentTime = this.time;
+        this.interval = setInterval(() => {
                 this.loading();
-            }, this.refresh);
-            this.isDisplay = true;
-        })
-
+        }, this.refresh);
+        this.isDisplay = true;
     }
 
     generateWindowsUpdate(){
-        return new Promise(res => {
-            this.wrapper.classList.add('wrap');
-            this.style.innerHTML = this.renderStyle();
-            this.wrapper.innerHTML = this.renderHtml();
-            document.body.append(this.style);
-            document.body.append(this.wrapper);
-            res();
-        })
+        this.wrapper.classList.add('wrap');
+        this.style.innerHTML = this.renderStyle();
+        this.wrapper.innerHTML = this.renderHtml();
+        document.body.append(this.style);
+        document.body.append(this.wrapper); 
     }
 
-    /**
-     * TODO remove setTimeout when remove
-     */
     removePopup(){
         this.wrapper.remove();
         this.style.remove();

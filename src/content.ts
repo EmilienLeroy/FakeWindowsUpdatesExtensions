@@ -1,3 +1,5 @@
+import WindowsUpdate from './WindowsUpdate';
+
 const windowsUpdate = new WindowsUpdate();
 
 chrome.runtime.onMessage.addListener(

@@ -1,6 +1,14 @@
-
 class WindowsUpdate
 {
+    time: number;
+    isDisplay: boolean;
+    percentage: number;
+    refresh: number;
+    interval: any;
+    wrapper: HTMLDivElement;
+    style: HTMLStyleElement;
+    currentTime: number;
+
     constructor(){
         this.time = 50000; 
         this.isDisplay = false;
@@ -62,7 +70,7 @@ class WindowsUpdate
         this.percentage = ((this.time - this.currentTime) * 100) / this.time;
         
         if(this.percentageDom) {
-            this.percentageDom.innerHTML = parseInt(this.percentage)+'% complete';
+            this.percentageDom.innerHTML = Math.round(this.percentage)+'% complete';
         }
         
         //is the time isn't finish reload the function
@@ -221,3 +229,5 @@ class WindowsUpdate
         `;
     }
 }
+
+export default WindowsUpdate;

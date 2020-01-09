@@ -1,5 +1,5 @@
-const btn = document.querySelector('#active');
-let time = document.querySelector('#time');
+const btn = <HTMLButtonElement>document.querySelector('#active');
+let time = <HTMLInputElement>document.querySelector('#time');
 
 chrome.storage.sync.get(['time'], function(store) {
     if(!time.value) {

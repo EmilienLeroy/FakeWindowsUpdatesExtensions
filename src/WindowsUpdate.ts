@@ -1,13 +1,13 @@
 class WindowsUpdate
 {
-  time: number;
-  isDisplay: boolean;
-  percentage: number;
-  refresh: number;
-  interval: any;
-  wrapper: HTMLDivElement;
-  style: HTMLStyleElement;
-  currentTime: number;
+  private time: number;
+  private percentage: number;
+  private refresh: number;
+  private interval: NodeJS.Timeout | undefined;
+  private wrapper: HTMLDivElement;
+  private style: HTMLStyleElement;
+  private currentTime: number;
+  public isDisplay: boolean;
 
   constructor() {
     this.time = 50000;
@@ -17,16 +17,16 @@ class WindowsUpdate
     this.interval;
   }
 
-  get percentageDom() {
+  public get percentageDom(): HTMLElement {
     return document.querySelector('#update__percentage');
   }
 
-  initDom() {
+  public initDom(): void {
     this.wrapper = document.createElement('div');
     this.style = document.createElement('style');
   }
 
-  addPopup() {
+  public addPopup(): void {
     this.initDom();
     this.generateWindowsUpdate();
     this.currentTime = this.time;
@@ -34,7 +34,7 @@ class WindowsUpdate
     this.isDisplay = true;
   }
 
-  generateWindowsUpdate() {
+  public generateWindowsUpdate(): void {
     this.wrapper.classList.add('wrap');
     this.style.innerHTML = this.renderStyle();
     this.wrapper.innerHTML = this.renderHtml();
@@ -42,7 +42,7 @@ class WindowsUpdate
     document.body.append(this.wrapper);
   }
 
-  removePopup() {
+  public removePopup(): void {
     this.wrapper.remove();
     this.style.remove();
     this.percentage = 0;
@@ -50,7 +50,7 @@ class WindowsUpdate
     clearInterval(this.interval);
   }
 
-  togglePopup(time) {
+  public togglePopup(time: string): void {
     if (time) {
       this.time = parseFloat(time) * 1000;
     }
@@ -62,7 +62,7 @@ class WindowsUpdate
     this.isDisplay ? this.removePopup() : this.addPopup();
   }
 
-  loading() {
+  public loading(): void {
     // calcul the percentage time
     this.currentTime = this.currentTime - this.refresh;
     this.percentage = ((this.time - this.currentTime) * 100) / this.time;
@@ -77,7 +77,7 @@ class WindowsUpdate
     }
   }
 
-  renderHtml() {
+  public renderHtml(): string {
     return `
       <div class="update">
         <div class="update__content">
@@ -108,7 +108,7 @@ class WindowsUpdate
     `;
   }
 
-  renderStyle() {
+  public renderStyle(): string {
     return `
       *{
           padding: 0;

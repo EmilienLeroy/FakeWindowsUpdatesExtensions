@@ -1,5 +1,5 @@
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.declarativeContent.onPageChanged.removeRules(undefined, () => {
+chrome.runtime.onInstalled.addListener((): void => {
+  chrome.declarativeContent.onPageChanged.removeRules(undefined, (): void => {
     chrome.declarativeContent.onPageChanged.addRules([{
       conditions: [new chrome.declarativeContent.PageStateMatcher(
         {

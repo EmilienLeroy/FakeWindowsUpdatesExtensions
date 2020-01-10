@@ -1,6 +1,6 @@
 {
     "name": "Fake Windows Update",
-    "version": "1.0",
+    "version": "0.0.1",
     "description": "Simulate a Windows update into your browser.",
     "manifest_version": 2,
     "permissions": ["storage","declarativeContent", "tabs", "activeTab","<all_urls>"],
@@ -15,6 +15,6 @@
         }
     ],
     "page_action": {
-        "default_popup": "popup/popup.html"
+        "default_popup": "./popup.html"
     }
 }

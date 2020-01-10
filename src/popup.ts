@@ -15,8 +15,8 @@ chrome.storage.sync.get(['time'], (store) => {
       time.value = '1';
     }
 
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id, { time: time.value }, (result) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs): void => {
+      chrome.tabs.sendMessage(tabs[0].id, { time: time.value }, (result): void => {
         result.isDisplay ?
           btn.innerHTML = 'stop' :
           btn.innerHTML = 'start';

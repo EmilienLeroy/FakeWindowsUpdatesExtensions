@@ -1,0 +1,37 @@
+{
+  "name": "fakewindowsupdateextension",
+  "version": "0.0.1",
+  "description": "A fake windows update for chrome",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --config webpack.dev.js --watch",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmilienLeroy/FakeWindowsUpdatesExtensions.git"
+  },
+  "author": "Emilien Leroy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EmilienLeroy/FakeWindowsUpdatesExtensions/issues"
+  },
+  "homepage": "https://github.com/EmilienLeroy/FakeWindowsUpdatesExtensions#readme",
+  "devDependencies": {
+    "@types/chrome": "0.0.91",
+    "@types/node": "^13.1.6",
+    "awesome-typescript-loader": "^5.2.1",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
+    "raw-loader": "^4.0.0",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^1.1.2",
+    "ts-loader": "^6.2.1",
+    "tslint": "^5.20.1",
+    "tslint-config-airbnb": "^5.11.2",
+    "typescript": "^3.7.4",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-merge": "^4.2.2"
+  }
+}

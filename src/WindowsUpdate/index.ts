@@ -52,6 +52,16 @@ class WindowsUpdate
     return document.querySelector('#update__percentage');
   }
 
+  public setTime(time: string): void {
+    if (time) {
+      this.time = parseFloat(time) * 1000;
+    }
+
+    if (this.time <= 0) {
+      this.time = 1000;
+    }
+  }
+
   /**
    * init the wrapper and style dom.
    */
@@ -66,8 +76,7 @@ class WindowsUpdate
   public addPopup(): void {
     this.initDom();
     this.generateWindowsUpdate();
-    this.currentTime = this.time;
-    this.interval = setInterval(this.loading.bind(this), this.refresh);
+    this.startLoading();
     this.isDisplay = true;
   }
 
@@ -93,20 +102,30 @@ class WindowsUpdate
     clearInterval(this.interval);
   }
 
+  public resetLoading(time: string): void {
+    this.stopLoading();
+    this.setTime(time);
+    this.percentage = 0;
+    this.updatePercentage();
+    this.startLoading();
+  }
+
   /**
    * Toggle the windows update.
    * @param time - time for the percentage
    */
   public togglePopup(time: string): void {
-    if (time) {
-      this.time = parseFloat(time) * 1000;
-    }
-
-    if (this.time <= 0) {
-      this.time = 1000;
-    }
-
+    this.setTime(time);
     this.isDisplay ? this.removePopup() : this.addPopup();
+  }
+
+  public startLoading() {
+    this.currentTime = this.time;
+    this.interval = setInterval(this.loading.bind(this), this.refresh);
+  }
+
+  public stopLoading() {
+    clearInterval(this.interval);
   }
 
   /**
@@ -116,14 +135,17 @@ class WindowsUpdate
     // calcul the percentage time
     this.currentTime = this.currentTime - this.refresh;
     this.percentage = ((this.time - this.currentTime) * 100) / this.time;
-
-    if (this.percentageDom) {
-      this.percentageDom.innerHTML = `${Math.round(this.percentage)}% complete`;
-    }
+    this.updatePercentage();
 
     // is the time isn't finish reload the function
     if (this.currentTime < 0 || this.percentage >= 100) {
       clearInterval(this.interval);
+    }
+  }
+
+  public updatePercentage() {
+    if (this.percentageDom) {
+      this.percentageDom.innerHTML = `${Math.round(this.percentage)}% complete`;
     }
   }
 

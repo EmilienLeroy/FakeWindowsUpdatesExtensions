@@ -52,6 +52,10 @@ class WindowsUpdate
     return document.querySelector('#update__percentage');
   }
 
+  /**
+   * Update the *time* property
+   * @param time - time for the percentage
+   */
   public setTime(time: string): void {
     if (time) {
       this.time = parseFloat(time) * 1000;
@@ -102,6 +106,11 @@ class WindowsUpdate
     clearInterval(this.interval);
   }
 
+  /**
+   * Reset the current percentage display
+   * with the new time pass in param.
+   * @param time - time for the percentage
+   */
   public resetLoading(time: string): void {
     this.stopLoading();
     this.setTime(time);
@@ -119,12 +128,18 @@ class WindowsUpdate
     this.isDisplay ? this.removePopup() : this.addPopup();
   }
 
-  public startLoading() {
+  /**
+   * Start loading depending on the *time* property.
+   */
+  public startLoading(): void {
     this.currentTime = this.time;
     this.interval = setInterval(this.loading.bind(this), this.refresh);
   }
 
-  public stopLoading() {
+  /**
+   * Stop loading, clear the *interval* property.
+   */
+  public stopLoading(): void {
     clearInterval(this.interval);
   }
 
@@ -143,7 +158,10 @@ class WindowsUpdate
     }
   }
 
-  public updatePercentage() {
+  /**
+   * Update the current percentage display.
+   */
+  public updatePercentage(): void {
     if (this.percentageDom) {
       this.percentageDom.innerHTML = `${Math.round(this.percentage)}% complete`;
     }
@@ -155,14 +173,15 @@ class WindowsUpdate
 
   public renderStyle(): string {
     return `
-      *{
+      * {
         padding: 0;
         margin: 0;
       }
 
-      body{
+      body {
         overflow: hidden;
       }
+
       ${style}
     `;
   }

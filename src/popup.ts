@@ -17,12 +17,8 @@ chrome.storage.sync.get(['time'], (store) => {
   // check if time is positive and no null.
   btn.addEventListener('click', () => {
     time.value = isPositive(time.value);
-    sendMessage({ time: time.value }, (result): void => {
-      result.isDisplay ?
-        btn.innerHTML = 'Stop' :
-        btn.innerHTML = 'Start';
-    });
-
+    window.close();
+    sendMessage({ time: time.value });
   });
 
   // send a message to reset the percentage.

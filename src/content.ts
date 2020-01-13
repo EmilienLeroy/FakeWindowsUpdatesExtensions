@@ -2,9 +2,9 @@ import WindowsUpdate from './WindowsUpdate';
 const windowsUpdate = new WindowsUpdate();
 
 chrome.runtime.onMessage.addListener(
-  (request, sender, sendResponse) => {
+  async (request, sender, sendResponse) => {
     if (request.time) {
-      windowsUpdate.togglePopup(request.time);
+      await windowsUpdate.togglePopup(request.time);
     }
 
     if (request.reset) {

@@ -77,9 +77,9 @@ class WindowsUpdate
   /**
    * Display the windows update.
    */
-  public addPopup(): void {
+  public async addPopup(): Promise<void> {
     this.initDom();
-    this.generateWindowsUpdate();
+    await this.generateWindowsUpdate();
     this.startLoading();
     this.isDisplay = true;
   }
@@ -87,12 +87,14 @@ class WindowsUpdate
   /**
    * Generate the windows update dom.
    */
-  public generateWindowsUpdate(): void {
+  public async generateWindowsUpdate(): Promise<void> {
     this.wrapper.classList.add('wrap');
     this.style.innerHTML = this.renderStyle();
     this.wrapper.innerHTML = this.renderHtml();
     document.body.append(this.style);
     document.body.append(this.wrapper);
+
+    await document.body.requestFullscreen();
   }
 
   /**
@@ -123,7 +125,7 @@ class WindowsUpdate
    * Toggle the windows update.
    * @param time - time for the percentage
    */
-  public togglePopup(time: string): void {
+  public async togglePopup(time: string): Promise<void> {
     this.setTime(time);
     this.isDisplay ? this.removePopup() : this.addPopup();
   }

@@ -3,8 +3,13 @@ const windowsUpdate = new WindowsUpdate();
 
 chrome.runtime.onMessage.addListener(
   async (request, sender, sendResponse) => {
-    if (request.time) {
-      await windowsUpdate.togglePopup(request.time);
+    if (request.time && !windowsUpdate.isDisplay) {
+      windowsUpdate.setTime(request.time);
+      await windowsUpdate.addPopup();
+    }
+
+    if (request.stop && windowsUpdate.isDisplay) {
+      windowsUpdate.removePopup();
     }
 
     if (request.reset) {

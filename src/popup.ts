@@ -1,8 +1,9 @@
 const btn = <HTMLButtonElement>document.querySelector('#active');
+const btnStop = <HTMLButtonElement>document.querySelector('#stop');
 const btnReset = <HTMLButtonElement>document.querySelector('#reset');
 let time = <HTMLInputElement>document.querySelector('#time');
 
-chrome.storage.sync.get(['time'], (store) => {
+chrome.storage.sync.get(['time', 'isDisplay'], (store) => {
   // get stored time or set a default value
   if (!time.value) {
     time.value = store.time || '60';
@@ -17,8 +18,17 @@ chrome.storage.sync.get(['time'], (store) => {
   // check if time is positive and no null.
   btn.addEventListener('click', () => {
     time.value = isPositive(time.value);
-    window.close();
-    sendMessage({ time: time.value });
+    chrome.storage.sync.set({ isDisplay: true }, () => {
+      window.close();
+      sendMessage({ time: time.value });
+    });
+  });
+
+  // stop the windows update
+  btnStop.addEventListener('click', () => {
+    sendMessage({ stop: true }, (result) => {
+      chrome.storage.sync.set({ isDisplay: result.isDisplay });
+    });
   });
 
   // send a message to reset the percentage.

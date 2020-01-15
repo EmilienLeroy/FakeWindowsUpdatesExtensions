@@ -23,3 +23,11 @@ chrome.runtime.onMessage.addListener(
     return true;
   },
 );
+
+window.document.addEventListener('keydown', (e: KeyboardEvent) => {
+  if (e.ctrlKey && e.keyCode === 101) {
+    chrome.storage.sync.get(['time', 'fullscreen'], (store) => {
+      windowsUpdate.togglePopup(store.time || '60');
+    });
+  }
+});

@@ -67,34 +67,30 @@ class WindowsUpdate
   }
 
   /**
-   * init the wrapper and style dom.
+   * Display the windows update and start the loading percentage.
+   * @param fullscreen - display the window update in fullscreen or not
    */
-  public initDom(): void {
-    this.wrapper = document.createElement('div');
-    this.style = document.createElement('style');
-  }
-
-  /**
-   * Display the windows update.
-   */
-  public async addPopup(): Promise<void> {
-    this.initDom();
-    await this.generateWindowsUpdate();
+  public async addPopup(fullscreen?: boolean): Promise<void> {
+    await this.generateWindowsUpdate(fullscreen);
     this.startLoading();
     this.isDisplay = true;
   }
 
   /**
-   * Generate the windows update dom.
+   * Generate the windows update dom and append this to the body.
+   * @param fullscreen - generate in fullscreen or not
    */
-  public async generateWindowsUpdate(): Promise<void> {
+  public async generateWindowsUpdate(fullscreen?: boolean): Promise<void> {
+    this.wrapper = document.createElement('div');
+    this.style = document.createElement('style');
     this.wrapper.classList.add('wrap');
     this.style.innerHTML = this.renderStyle();
     this.wrapper.innerHTML = this.renderHtml();
     document.body.append(this.style);
     document.body.append(this.wrapper);
-
-    await document.body.requestFullscreen();
+    if (fullscreen) {
+      await document.body.requestFullscreen();
+    }
   }
 
   /**

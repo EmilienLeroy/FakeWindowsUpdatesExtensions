@@ -89,7 +89,7 @@ class WindowsUpdate
     document.body.append(this.style);
     document.body.append(this.wrapper);
     if (fullscreen) {
-      await document.body.requestFullscreen();
+      await document.body.requestFullscreen({ navigationUI: 'hide' });
     }
   }
 
@@ -102,6 +102,9 @@ class WindowsUpdate
     this.percentage = 0;
     this.isDisplay = false;
     clearInterval(this.interval);
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
   }
 
   /**
@@ -121,9 +124,9 @@ class WindowsUpdate
    * Toggle the windows update.
    * @param time - time for the percentage
    */
-  public async togglePopup(time: string): Promise<void> {
+  public async togglePopup(time: string, fullscreen?: boolean): Promise<void> {
     this.setTime(time);
-    this.isDisplay ? this.removePopup() : this.addPopup();
+    this.isDisplay ? this.removePopup() : this.addPopup(fullscreen);
   }
 
   /**

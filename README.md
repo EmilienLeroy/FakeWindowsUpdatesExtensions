@@ -1,5 +1,9 @@
 # Fake Windows Update Extension
 
+Simple fake windows update extension. The easiest way to take a break at work.
+Inspired by a codepen that i did some time ago. 
+https://codepen.io/emilienleroy/pen/QVZQbB
+
 ## Contribute
 
 ### Install

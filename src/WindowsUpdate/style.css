@@ -27,8 +27,11 @@
   text-align: center;
   color: #fbfdfd;
   font-family: sans-serif;
-  font-size: 20px;
-  line-height: 30px;
+}
+
+.update__text p {
+  font-size: 20px !important;
+  line-height: 30px !important;
 }
 
 .update__loader{

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -14,16 +16,45 @@ body {
 
 .time,
 .control {
-    height: 50%;
     flex-grow: 1;
     display: flex;
     align-items: center;
 }
 
 .time {
-    justify-content: space-around;
+    height: 60%;
+    flex-direction: column;
+    border-bottom: 1px solid #C1F0FF;
+    margin: 0 20px;
+    justify-content: space-between;
+}
+
+.time__input {
+    margin-top: 25%;
+}
+
+.time__title {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 16px;
+    color: #00C2FF;
+    margin-bottom: 5px;
 }
 
 .control {
-    justify-content: center;
+    height: 40%;
+    margin: 0 20px;
+    justify-content: space-around;
+}
+
+.control__btn {
+    background-color: #00C2FF;
+    border: none;
+    color: white;
+}
+
+.control__btn i {
+    font-size: 48px;
 }

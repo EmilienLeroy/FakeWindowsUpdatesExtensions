@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
   </head>
   <body>
     <div class="time">
-      <input min="0" id="time" type="number">
+      <input class="time__input" min="0" id="time" type="number">
+      <div class="time__title">Fake Windows Update</div>
     </div>
     <div class="control">
-      <button id="active">Start</button>
-      <button id="stop">Stop</button>
-      <button id="reset">Reset</button>
+      <button class="control__btn" id="active">
+        <i class="material-icons">
+          play_arrow
+        </i>
+      </button>
+      <button class="control__btn" id="stop">
+        <i class="material-icons">
+          stop
+        </i>
+      </button>
+      <button class="control__btn" id="reset">
+        <i class="material-icons md-36">
+          settings_backup_restore
+        </i>
+      </button>
     </div>
     <div class="footer">
       <label for="fullscreen">Fullscreen</label>

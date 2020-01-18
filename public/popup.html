@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-    </style>
+    <link href="./style.css" rel="stylesheet">
   </head>
   <body>
-    <input min="0" id="time" type="number">
-    <button id="active">Start</button>
-    <button id="stop">Stop</button>
-    <button id="reset">Reset</button>
-    <label for="fullscreen">Fullscreen</label>
-    <input id="fullscreen" type="checkbox">
+    <div class="time">
+      <input min="0" id="time" type="number">
+    </div>
+    <div class="control">
+      <button id="active">Start</button>
+      <button id="stop">Stop</button>
+      <button id="reset">Reset</button>
+    </div>
+    <div class="footer">
+      <label for="fullscreen">Fullscreen</label>
+      <input id="fullscreen" type="checkbox">
+    </div>
     <script src="js/popup.js"></script>
   </body>
 </html>

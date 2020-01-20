@@ -44,17 +44,57 @@ body {
 }
 
 .control {
-    height: 40%;
+    height: 25%;
     margin: 0 20px;
     justify-content: space-around;
+}
+
+.control__action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.control__text {
+    color: #6BDCFF;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 5px;
 }
 
 .control__btn {
     background-color: #00C2FF;
     border: none;
     color: white;
+    border-radius: 100%;
+    padding: 5px;
 }
 
-.control__btn i {
-    font-size: 48px;
+.control__icone {
+    font-size: 43px;
+    margin: 2px;
+    height: 43px;
+    width: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control__icone--start {
+    font-size: 45px;
+}
+
+.control__icone--stop {
+    font-size: 40px;
+}
+
+.control__icone--restart {
+    font-size: 35px;
+    transform: translateX(0.5px);
+}
+
+.footer {
+    margin: 0px 15px 15px 15px;
 }

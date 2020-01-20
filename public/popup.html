@@ -11,21 +11,32 @@
       <div class="time__title">Fake Windows Update</div>
     </div>
     <div class="control">
-      <button class="control__btn" id="active">
-        <i class="material-icons">
-          play_arrow
-        </i>
-      </button>
-      <button class="control__btn" id="stop">
-        <i class="material-icons">
-          stop
-        </i>
-      </button>
-      <button class="control__btn" id="reset">
-        <i class="material-icons md-36">
-          settings_backup_restore
-        </i>
-      </button>
+      <div class="control__action">
+        <button class="control__btn" id="active">
+          <i class="material-icons control__icone control__icone--start">
+            play_arrow
+          </i>
+        </button>
+        <p class="control__text">Start</p>
+      </div>
+      
+      <div class="control__action">
+        <button class="control__btn" id="stop">
+          <i class="material-icons control__icone control__icone--stop">
+            stop
+          </i>
+        </button>
+        <p class="control__text">Stop</p>
+      </div>
+
+      <div class="control__action">
+        <button class="control__btn" id="reset">
+          <i class="material-icons control__icone control__icone--restart">
+            settings_backup_restore
+          </i>
+        </button>
+        <p class="control__text">Restart</p>
+      </div>
     </div>
     <div class="footer">
       <label for="fullscreen">Fullscreen</label>

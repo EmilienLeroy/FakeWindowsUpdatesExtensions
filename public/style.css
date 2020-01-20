@@ -52,6 +52,38 @@ body {
     margin-bottom: 5px;
 }
 
+.time__input {
+    width: 50%;
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 59px;
+    color: #00C2FF;
+    text-align: center;
+    padding-right: 5px;
+    border: none;
+    background: transparent;
+}
+
+.time__btn {
+    background: #00C2FF;
+    border: 5px solid #FFFFFF;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+
+.time__icone {
+    font-size: 45px;
+    padding: 0;
+    margin: 0;
+    width: fit-content;
+    border-radius: 100%;
+    transform: translateX(-2px);
+}
+
 .control {
     height: 25%;
     padding: 0 20px;
@@ -124,4 +156,24 @@ body {
     border-top-right-radius: 100%;
     border-top-left-radius: 100%;
     transform: translateX(-160px);
+}
+
+.circle {
+    position: absolute;
+    margin: 10px 50px 0;
+    z-index: -1;
+    transform: rotate(47deg);
+}
+
+@keyframes rotating {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+ 
+.rotating {
+    animation: rotating 120s linear infinite;
 }

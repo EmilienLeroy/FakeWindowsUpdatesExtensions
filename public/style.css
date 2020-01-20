@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -24,13 +30,16 @@ body {
 .time {
     height: 60%;
     flex-direction: column;
-    border-bottom: 1px solid #C1F0FF;
     margin: 0 20px;
     justify-content: space-between;
 }
 
-.time__input {
-    margin-top: 25%;
+.time__circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    flex-grow: 1;
 }
 
 .time__title {
@@ -45,7 +54,7 @@ body {
 
 .control {
     height: 25%;
-    margin: 0 20px;
+    padding: 0 20px;
     justify-content: space-around;
 }
 
@@ -56,7 +65,7 @@ body {
 }
 
 .control__text {
-    color: #6BDCFF;
+    color: white;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
@@ -70,6 +79,11 @@ body {
     color: white;
     border-radius: 100%;
     padding: 5px;
+}
+
+.control__btn--reverse {
+    background-color: white;
+    color: #00C2FF;
 }
 
 .control__icone {
@@ -96,5 +110,18 @@ body {
 }
 
 .footer {
-    margin: 0px 15px 15px 15px;
+    padding: 0px 15px 15px 15px;
+}
+
+.background {
+    position: absolute;
+    background: #00C2FF;
+    bottom: 0;
+    height: 37%;
+    width: 600px;
+    left: 0;
+    z-index: -1;
+    border-top-right-radius: 100%;
+    border-top-left-radius: 100%;
+    transform: translateX(-160px);
 }

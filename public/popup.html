@@ -7,12 +7,17 @@
   </head>
   <body>
     <div class="time">
-      <input class="time__input" min="0" id="time" type="number">
+      <div class="time__circle">
+        <button>I</button>
+        <input class="time__input" min="0" id="time" type="number">
+        <button>I</button>
+      </div>
       <div class="time__title">Fake Windows Update</div>
     </div>
+
     <div class="control">
       <div class="control__action">
-        <button class="control__btn" id="active">
+        <button class="control__btn control__btn--reverse" id="active">
           <i class="material-icons control__icone control__icone--start">
             play_arrow
           </i>
@@ -42,6 +47,7 @@
       <label for="fullscreen">Fullscreen</label>
       <input id="fullscreen" type="checkbox">
     </div>
+    <div class="background"></div>
     <script src="js/popup.js"></script>
   </body>
 </html>

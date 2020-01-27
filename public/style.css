@@ -70,9 +70,40 @@ body {
     background: #00C2FF;
     border: 5px solid #FFFFFF;
     color: white;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 100%;
+}
+
+.time__btn--up {
+    margin-top: 15px;
+}
+
+.time__btn--down {
+    margin-bottom: 15px;
+}
+
+.time__text {
+    text-align: center;
+}
+
+.time__sec {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 8px;
+    color: #707070;
+    transform: translateY(-5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+.sec__icone {
+    font-size: 13px;
+    margin: 0 2px;
 }
 
 .time__icone {
@@ -81,7 +112,7 @@ body {
     margin: 0;
     width: fit-content;
     border-radius: 100%;
-    transform: translateX(-2px);
+    transform: translateX(-4px) translateY(-4px);
 }
 
 .control {

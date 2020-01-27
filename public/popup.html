@@ -8,13 +8,21 @@
   <body>
     <div class="time">
       <div class="time__circle">
-        <button class="time__btn">
+        <button class="time__btn time__btn--up">
           <i class="material-icons time__icone">
             keyboard_arrow_up
           </i>
         </button>
-        <input class="time__input" min="0" id="time" type="number">
-        <button class="time__btn">
+        <div class="time__text">
+          <input class="time__input" min="0" id="time" type="number">
+          <div class="time__sec"> 
+            <i class="material-icons sec__icone">
+              timer
+            </i>
+            secondes
+          </div>
+        </div>
+        <button class="time__btn time__btn--down">
           <i class="material-icons time__icone">
             keyboard_arrow_down
           </i>

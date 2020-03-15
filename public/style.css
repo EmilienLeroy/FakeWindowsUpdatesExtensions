@@ -173,7 +173,11 @@ body {
 }
 
 .footer {
-    padding: 0px 15px 15px 15px;
+    padding: 0px 35px 15px 35px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: white;
 }
 
 .background {

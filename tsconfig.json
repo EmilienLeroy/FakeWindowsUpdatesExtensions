@@ -7,6 +7,12 @@
         "rootDir": "src",
         "outDir": "dist/js",
         "noEmitOnError": true,
-        "typeRoots": [ "node_modules/@types" ]
-    }
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "typeRoots": [ "node_modules/@types" ],
+    },
+    "exclude": [
+        "dist",
+        "node_modules",
+    ]
 }

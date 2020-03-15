@@ -1,10 +1,15 @@
+const packageJson = require('../package.json');
+
 const btn = <HTMLButtonElement>document.querySelector('#active');
 const btnStop = <HTMLButtonElement>document.querySelector('#stop');
 const btnReset = <HTMLButtonElement>document.querySelector('#reset');
 const fullscreenBox = <HTMLInputElement>document.querySelector('#fullscreen');
+const version = <HTMLDivElement>document.querySelector('#version');
 let time = <HTMLInputElement>document.querySelector('#time');
 
 chrome.storage.sync.get(['time', 'isDisplay', 'fullscreen'], (store) => {
+  version.innerHTML = `version ${packageJson.version}`;
+
   // get stored time or set a default value
   if (!time.value) {
     time.value = store.time || '60';

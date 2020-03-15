@@ -73,6 +73,13 @@ body {
     width: 45px;
     height: 45px;
     border-radius: 100%;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.time__btn:hover {
+    box-shadow: 0 0 20px 10px #ffffff;
+    transition: all 0.25s ease;
 }
 
 .time__btn--up {
@@ -142,6 +149,13 @@ body {
     color: white;
     border-radius: 100%;
     padding: 5px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.control__btn:hover {
+    box-shadow: 0 0 20px white;
+    transition: all 0.25s ease;
 }
 
 .control__btn--reverse {

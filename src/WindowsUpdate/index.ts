@@ -52,6 +52,14 @@ class WindowsUpdate
     return document.querySelector('#update__percentage');
   }
 
+  public get workDom(): HTMLElement {
+    return this.wrapper.querySelector('#work_on_update');
+  }
+
+  public get dontDom(): HTMLElement {
+    return this.wrapper.querySelector('#dont_turn');
+  }
+
   /**
    * Update the *time* property
    * @param time - time for the percentage
@@ -86,6 +94,8 @@ class WindowsUpdate
     this.wrapper.classList.add('wrap');
     this.style.innerHTML = this.renderStyle();
     this.wrapper.innerHTML = this.renderHtml();
+    this.workDom.innerHTML = chrome.i18n.getMessage('working_on_update');
+    this.dontDom.innerHTML = chrome.i18n.getMessage('dont_stop');
     document.body.append(this.style);
     document.body.append(this.wrapper);
     if (fullscreen) {
@@ -164,7 +174,7 @@ class WindowsUpdate
    */
   public updatePercentage(): void {
     if (this.percentageDom) {
-      this.percentageDom.innerHTML = `${Math.round(this.percentage)}% complete`;
+      this.percentageDom.innerHTML = `${Math.round(this.percentage)}% ${chrome.i18n.getMessage('complete')}`;
     }
   }
 

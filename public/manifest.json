@@ -1,6 +1,6 @@
 {
   "name": "Fake Windows Update",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simulate a Windows update into your browser.",
   "default_locale": "en",
   "icons": { 
@@ -19,10 +19,10 @@
       "persistent": false
   },
   "content_scripts": [
-      {
-          "matches": ["<all_urls>"],
-          "js": ["js/content.js"]
-      }
+    {
+        "matches": ["<all_urls>"],
+        "js": ["js/content.js"]
+    }
   ],
   "page_action": {
       "default_popup": "./popup.html"

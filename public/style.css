@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 350px;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.time,
+.control {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.time {
+    height: 60%;
+    flex-direction: column;
+    margin: 0 20px;
+    justify-content: space-between;
+}
+
+.time__circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    flex-grow: 1;
+}
+
+.time__title {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 16px;
+    color: #005AA0;
+    margin-bottom: 5px;
+}
+
+.time__input {
+    width: 50%;
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 59px;
+    color: #005AA0;
+    text-align: center;
+    padding-right: 5px;
+    border: none;
+    background: transparent;
+}
+
+.time__btn {
+    background: #005AA0;
+    border: 5px solid #FFFFFF;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.time__btn:hover {
+    box-shadow: 0 0 20px 10px #ffffff;
+    transition: all 0.25s ease;
+}
+
+.time__btn--up {
+    margin-top: 15px;
+}
+
+.time__btn--down {
+    margin-bottom: 15px;
+}
+
+.time__text {
+    text-align: center;
+}
+
+.time__sec {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 8px;
+    color: #707070;
+    transform: translateY(-5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+.sec__icone {
+    font-size: 13px;
+    margin: 0 2px;
+}
+
+.time__icone {
+    font-size: 45px;
+    padding: 0;
+    margin: 0;
+    width: fit-content;
+    border-radius: 100%;
+    transform: translateX(-4px) translateY(-4px);
+}
+
+.control {
+    height: 25%;
+    padding: 0 20px;
+    justify-content: space-around;
+}
+
+.control__action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.control__text {
+    color: white;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.control__btn {
+    background-color: #005AA0;
+    border: none;
+    color: white;
+    border-radius: 100%;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.control__btn:hover {
+    box-shadow: 0 0 20px white;
+    transition: all 0.25s ease;
+}
+
+.control__btn--reverse {
+    background-color: white;
+    color: #005AA0;
+}
+
+.control__icone {
+    font-size: 43px;
+    margin: 2px;
+    height: 43px;
+    width: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control__icone--start {
+    font-size: 45px;
+}
+
+.control__icone--stop {
+    font-size: 40px;
+}
+
+.control__icone--restart {
+    font-size: 35px;
+    transform: translateX(0.5px);
+}
+
+.footer {
+    padding: 0px 35px 15px 35px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: white;
+    align-items: center;
+}
+
+.background {
+    position: absolute;
+    background: #005AA0;
+    bottom: 0;
+    height: 38%;
+    width: 600px;
+    left: 0;
+    z-index: -1;
+    border-top-right-radius: 100%;
+    border-top-left-radius: 100%;
+    transform: translateX(-160px);
+}
+
+.circle {
+    position: absolute;
+    margin: 10px 50px 0;
+    z-index: -1;
+    transform: rotate(47deg);
+}
+
+.fullscreen {
+    display: flex;
+    align-items: center;
+}
+
+/*
+toggle input from this codepen.
+https://codepen.io/andreasstorm/pen/ZorYLO
+*/
+.toggle {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 20px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate3d(0, 0, 0) scale(0.6);
+}
+
+.toggle:before {
+  content: "";
+  position: relative;
+  top: 3px;
+  left: 3px;
+  width: 34px;
+  height: 14px;
+  display: block;
+  background: #9A9999;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.toggle span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(154, 153, 153, 0.5);
+  transition: all 0.2s ease;
+}
+
+.toggle span:before {
+  content: "";
+  position: absolute;
+  display: block;
+  margin: -18px;
+  width: 56px;
+  height: 56px;
+  background: white;
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 1;
+  pointer-events: none;
+}
+
+#fullscreen:checked + .toggle:before {
+  background: white;
+  opacity: 0.5;
+}
+
+#fullscreen:checked + .toggle span {
+  background: white;
+  transform: translateX(20px);
+  transition: all 0.2s cubic-bezier(0.8, 0.4, 0.3, 1.25), background 0.15s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+#fullscreen:checked + .toggle span:before {
+  transform: scale(1);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+@keyframes rotating {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+ 
+.rotating {
+    animation: rotating 120s linear infinite;
+}
+

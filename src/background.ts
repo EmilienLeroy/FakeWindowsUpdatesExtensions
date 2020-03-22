@@ -10,13 +10,25 @@ const rules = [{
 chrome.runtime.onInstalled.addListener((): void => {
   chrome.declarativeContent.onPageChanged.removeRules(undefined, (): void => {
     chrome.declarativeContent.onPageChanged.addRules(rules, () => {
-      chrome.commands.onCommand.addListener((command) => {
-        if (command === 'toggle-windows') {
-          chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            chrome.tabs.sendMessage(tabs[0].id, { toggle: true });
-          });
-        }
+      chrome.tabs.query({}, (tabs: chrome.tabs.Tab[]) => {
+        tabs.forEach((tab: chrome.tabs.Tab) => addShortCutListener(tab));
       });
     });
   });
 });
+
+chrome.tabs.onCreated.addListener((tab: chrome.tabs.Tab) => {
+  addShortCutListener(tab);
+});
+
+function addShortCutListener(tab: chrome.tabs.Tab) {
+  chrome.commands.onCommand.addListener((command) => {
+    if (command === 'toggle-windows') {
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs): void => {
+        if (tabs[0].id === tab.id) {
+          chrome.tabs.sendMessage(tab.id, { toggle: true });
+        }
+      });
+    }
+  });
+}

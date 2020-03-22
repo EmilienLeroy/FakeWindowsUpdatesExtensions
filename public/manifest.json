@@ -11,8 +11,7 @@
   "manifest_version": 2,
   "permissions": [
     "storage", 
-    "declarativeContent", 
-    "tabs",
+    "declarativeContent",
     "activeTab",
     "<all_urls>"
   ],

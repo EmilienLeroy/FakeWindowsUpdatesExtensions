@@ -1,10 +1,17 @@
+const packageJson = require('../package.json');
+
 const btn = <HTMLButtonElement>document.querySelector('#active');
 const btnStop = <HTMLButtonElement>document.querySelector('#stop');
 const btnReset = <HTMLButtonElement>document.querySelector('#reset');
+const addTime = <HTMLButtonElement>document.querySelector('#addtime');
+const removeTime = <HTMLButtonElement>document.querySelector('#removetime');
 const fullscreenBox = <HTMLInputElement>document.querySelector('#fullscreen');
+const version = <HTMLDivElement>document.querySelector('#version');
 let time = <HTMLInputElement>document.querySelector('#time');
 
 chrome.storage.sync.get(['time', 'isDisplay', 'fullscreen'], (store) => {
+  version.innerHTML = `version ${packageJson.version}`;
+
   // get stored time or set a default value
   if (!time.value) {
     time.value = store.time || '60';
@@ -12,8 +19,21 @@ chrome.storage.sync.get(['time', 'isDisplay', 'fullscreen'], (store) => {
 
   fullscreenBox.checked = store.fullscreen;
 
+  addTime.addEventListener('click', () => {
+    time.value = (parseInt(time.value, 10) + 1).toString();
+  });
+
+  removeTime.addEventListener('click', () => {
+    if (parseInt(time.value, 10) > 1) {
+      time.value = (parseInt(time.value, 10) - 1).toString();
+    }
+  });
+
   // update stored time
   time.addEventListener('change', () => {
+    if (parseInt(time.value, 10) < 0) {
+      time.value = '1';
+    }
     chrome.storage.sync.set({ time: time.value });
   });
 

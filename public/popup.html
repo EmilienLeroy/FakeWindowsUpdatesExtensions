@@ -1,16 +1,77 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-    </style>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
   </head>
   <body>
-    <input min="0" id="time" type="number">
-    <button id="active">Start</button>
-    <button id="stop">Stop</button>
-    <button id="reset">Reset</button>
-    <label for="fullscreen">Fullscreen</label>
-    <input id="fullscreen" type="checkbox">
+    <div class="time">
+      <div class="time__circle">
+        <button id="addtime" class="time__btn time__btn--up">
+          <i class="material-icons time__icone">
+            keyboard_arrow_up
+          </i>
+        </button>
+        <div class="time__text">
+          <input class="time__input" min="0" id="time" type="number">
+          <div class="time__sec"> 
+            <i class="material-icons sec__icone">
+              timer
+            </i>
+            secondes
+          </div>
+        </div>
+        <button id="removetime" class="time__btn time__btn--down">
+          <i class="material-icons time__icone">
+            keyboard_arrow_down
+          </i>
+        </button>
+      </div>
+      <div class="time__title">Fake Windows Update</div>
+    </div>
+
+    <div class="control">
+      <div class="control__action">
+        <button class="control__btn control__btn--reverse" id="active">
+          <i class="material-icons control__icone control__icone--start">
+            play_arrow
+          </i>
+        </button>
+        <p class="control__text">Start</p>
+      </div>
+      
+      <div class="control__action">
+        <button class="control__btn" id="stop">
+          <i class="material-icons control__icone control__icone--stop">
+            stop
+          </i>
+        </button>
+        <p class="control__text">Stop</p>
+      </div>
+
+      <div class="control__action">
+        <button class="control__btn" id="reset">
+          <i class="material-icons control__icone control__icone--restart">
+            settings_backup_restore
+          </i>
+        </button>
+        <p class="control__text">Restart</p>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="fullscreen">
+        <input id="fullscreen" class="chx" type="checkbox" style="display:none;">
+        <label for="fullscreen" class="toggle"><span></span></label>
+        <div>Fullscreen</div>
+      </div>
+      <div id="version"></div>
+    </div>
+  </div>
+    <svg class="circle rotating" width="180" height="180" viewBox="0 0 164 164" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="82" cy="82" r="69.5" fill="white" stroke="#00C2FF" stroke-width="25" stroke-dasharray="12 12"/>
+    </svg>
+    <div class="background"></div>
     <script src="js/popup.js"></script>
   </body>
 </html>

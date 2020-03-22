@@ -1,28 +1,39 @@
 {
-    "name": "Fake Windows Update",
-    "version": "0.0.1",
-    "description": "Simulate a Windows update into your browser.",
-    "manifest_version": 2,
-    "permissions": ["storage","declarativeContent", "tabs", "activeTab","<all_urls>"],
-    "background": {
-        "scripts": ["js/background.js"],
-        "persistent": false
-    },
-    "content_scripts": [
-        {
-            "matches": ["<all_urls>"],
-            "js": ["js/content.js"]
-        }
-    ],
-    "page_action": {
-        "default_popup": "./popup.html"
-    },
-    "commands": {
-        "toggle-windows": {
-          "suggested_key": {
-            "default": "Ctrl+Shift+E"
-          },
-          "description": "Toggle Windows Update"
-        }
+  "name": "Fake Windows Update",
+  "version": "0.0.1",
+  "description": "Simulate a Windows update into your browser.",
+  "icons": { 
+    "16": "icon16.png",
+    "48": "icon48.png",
+   "128": "icon128.png" 
+  },
+  "manifest_version": 2,
+  "permissions": [
+    "storage", 
+    "declarativeContent", 
+    "tabs",
+    "activeTab",
+    "<all_urls>"
+  ],
+  "background": {
+      "scripts": ["js/background.js"],
+      "persistent": false
+  },
+  "content_scripts": [
+      {
+          "matches": ["<all_urls>"],
+          "js": ["js/content.js"]
       }
+  ],
+  "page_action": {
+      "default_popup": "./popup.html"
+  },
+  "commands": {
+      "toggle-windows": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+E"
+        },
+      "description": "Toggle Windows Update"
+    }
+  }
 }

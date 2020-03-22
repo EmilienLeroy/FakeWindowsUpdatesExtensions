@@ -1,0 +1,14 @@
+{
+    "working_on_update": {
+        "message": "Working on updates",
+        "description": "Main text into the window update"
+    },
+    "dont_stop":  {
+        "message": "Don't turn of your computer",
+        "description": "Advice information"
+    },
+    "complete": {
+        "message": "complete",
+        "description": "Percentage already complete"
+    }
+}

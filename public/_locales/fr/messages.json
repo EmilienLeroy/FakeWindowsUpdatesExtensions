@@ -1,0 +1,14 @@
+{
+    "working_on_update": {
+        "message": "Installation des mises à jour",
+        "description": "Main text into the window update"
+    },
+    "dont_stop":  {
+        "message": "Ne mettez pas votre ordinateur hors tension.",
+        "description": "Advice information"
+    },
+    "complete": {
+        "message": "complété",
+        "description": "Percentage already complete"
+    }
+}

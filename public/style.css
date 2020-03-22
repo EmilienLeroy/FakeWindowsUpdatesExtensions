@@ -48,7 +48,7 @@ body {
     font-weight: 600;
     font-size: 15px;
     line-height: 16px;
-    color: #00C2FF;
+    color: #005AA0;
     margin-bottom: 5px;
 }
 
@@ -59,7 +59,7 @@ body {
     font-weight: bold;
     font-size: 50px;
     line-height: 59px;
-    color: #00C2FF;
+    color: #005AA0;
     text-align: center;
     padding-right: 5px;
     border: none;
@@ -67,7 +67,7 @@ body {
 }
 
 .time__btn {
-    background: #00C2FF;
+    background: #005AA0;
     border: 5px solid #FFFFFF;
     color: white;
     width: 45px;
@@ -144,7 +144,7 @@ body {
 }
 
 .control__btn {
-    background-color: #00C2FF;
+    background-color: #005AA0;
     border: none;
     color: white;
     border-radius: 100%;
@@ -160,7 +160,7 @@ body {
 
 .control__btn--reverse {
     background-color: white;
-    color: #00C2FF;
+    color: #005AA0;
 }
 
 .control__icone {
@@ -197,7 +197,7 @@ body {
 
 .background {
     position: absolute;
-    background: #00C2FF;
+    background: #005AA0;
     bottom: 0;
     height: 38%;
     width: 600px;
